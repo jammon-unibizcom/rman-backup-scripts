@@ -1,5 +1,5 @@
 sudo yum -y install java p7zip
-sudo su oracle sh -c "cd ~ ; https://github.com/jammon-unibizcom/rman-backup-scripts/raw/master/ora.7z ; https://github.com/jammon-unibizcom/rman-backup-scripts/raw/master/F.7z ; 7za x ora.7z ; rm -rf ora.7z ; cd /F/R2 ; 7za x /home/oracle/F.7z ; cd ~ ; rm -rf F.7z ; mkdir ~/lib ; echo \"ENCRYPTION_WALLET_LOCATION=\" >>$TNS_ADMIN/sqlnet.ora ; echo \" (SOURCE=\" >>$TNS_ADMIN/sqlnet.ora ; echo \"  (METHOD=FILE) \" >>$TNS_ADMIN/sqlnet.ora ; echo \"   (METHOD_DATA=\" >>$TNS_ADMIN/sqlnet.ora ; echo \"    (DIRECTORY=/home/oracle/wallet))) \" >>$TNS_ADMIN/sqlnet.ora" ; java -jar opc_install.jar -opcId 'oracleidentitycloudservice/RMANbackupservice' -opcPass $3 -container $2 -walletdir ~/wallet -libDir ~/lib -configfile ~/config -host https://swiftobjectstorage.$1.oraclecloud.com/v1/unibiz ; rman target / @/home/oracle/rmanConfig.sql ; sqlplus / as sysdba @/home/oracle/cr_cloudBackup.sql ; chmod +x /F/R2/*.bat
+sudo su oracle sh -c "cd /home/oracle ; wget -o /home/oracle/setupBackup.sh https://github.com/jammon-unibizcom/rman-backup-scripts/raw/master/setupBackup.sh ; chmod +x /home/oracle/setupBackup.sh ; /home/oracle/setupBackup.sh $1 $2 $3"
 sudo systemctl stop crond.service
 sudo mv /etc/crontab /etc/crontab.bak
 sudo su -c "echo 30 23 \* \* \* oracle /F/R2/r2hotbackup.bat >>/etc/crontab"
