@@ -1,5 +1,5 @@
 sudo yum -y install java p7zip
-sudo su oracle sh -c "cd /home/oracle ; wget https://github.com/jammon-unibizcom/rman-backup-scripts/raw/master/setupBackup.sh ; chmod +x /home/oracle/setupBackup.sh ; /home/oracle/setupBackup.sh $1 $2 $3"
+sudo su oracle sh -c "cd /home/oracle ; wget https://github.com/jammon-unibizcom/rman-backup-scripts/raw/master/configBackup.sh ; chmod +x /home/oracle/configBackup.sh ; /home/oracle/configBackup.sh $1 $2 $3"
 sudo systemctl stop crond.service
 sudo mv /etc/crontab /etc/crontab.bak
 sudo su -c "echo 30 23 \* \* \* oracle /F/R2/r2hotbackup.bat >>/etc/crontab"
