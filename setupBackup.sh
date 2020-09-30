@@ -6,7 +6,7 @@ sudo su -c "cat /etc/crontab.bak | grep -v \.bat >/etc/crontab"
 sudo su -c "echo 30 23 \* \* \* oracle /F/R2/r2hotbackup.bat >>/etc/crontab"
 sudo su -c "echo */20 \* \* \* \* oracle /F/R2/rman_cloud_archivelog.bat >>/etc/crontab"
 sudo su -c "echo 00 01 \* \* sun,wed oracle /F/R2/analyze.bat >>/etc/crontab"
-sudo su -c "chmod 644 /etc/crontab"
+sudo su -c "chmod 600 /etc/crontab"
 sudo systemctl start crond.service
 
 rm -rf /home/opc/setupBackup.sh
