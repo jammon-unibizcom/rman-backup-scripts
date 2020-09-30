@@ -15,3 +15,5 @@ java -jar opc_install.jar -opcId 'oracleidentitycloudservice/RMANbackupservice' 
 rman target / @/home/oracle/rmanConfig.sql
 sqlplus / as sysdba @/home/oracle/cr_cloudBackup.sql
 chmod +x /F/R2/*.bat
+rm -rf /home/oracle/cr_cloudBackup.sql /home/oracle/opc_install.jar /home/oracle/rmanConfig.sql
+rm -rf /home/oracle/configBackup.sh
