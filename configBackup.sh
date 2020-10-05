@@ -11,7 +11,7 @@ echo " (SOURCE=" >>$TNS_ADMIN/sqlnet.ora
 echo "  (METHOD=FILE) " >>$TNS_ADMIN/sqlnet.ora
 echo "   (METHOD_DATA=" >>$TNS_ADMIN/sqlnet.ora
 echo "    (DIRECTORY=/home/oracle/wallet))) " >>$TNS_ADMIN/sqlnet.ora
-java -jar opc_install.jar -opcId 'oracleidentitycloudservice/RMANbackupservice' -opcPass $3 -container $2 -walletdir ~/wallet -libDir ~/lib -configfile ~/config -host https://swiftobjectstorage.$1.oraclecloud.com/v1/unibiz
+java -jar opc_install.jar -opcId $4  -opcPass $3 -container $2 -walletdir ~/wallet -libDir ~/lib -configfile ~/config -host https://swiftobjectstorage.$1.oraclecloud.com/v1/unibiz
 /C/R2Database/product/12.2.0/db_1/bin/rman target / @/home/oracle/rmanConfig.sql log=/home/oracle/rmanLog.log
 cat /home/oracle/rmanLog.log
 sqlplus / as sysdba @/home/oracle/cr_cloudBackup.sql
