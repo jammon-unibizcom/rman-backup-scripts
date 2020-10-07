@@ -13,7 +13,7 @@ MAILTO=root
 # |  |  |  |  |
 # *  *  *  *  * user-name  command to be executed
 
-30 23 * * * oracle /F/R2/r2hotbackup.bat
+30 01 * * * oracle /F/R2/r2hotbackup.bat
 */20 * * * * oracle /F/R2/rman_cloud_archivelog.bat
 00 01 * * sun,wed oracle /F/R2/analyze.bat
 #00 01 * * sat oracle /F/R2/analyze_Saturday.bat
